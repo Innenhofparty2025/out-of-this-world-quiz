@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Startseite - OUT OF THIS WORLD - Quiz</title>
+  <style>
+    body {
+      font-family: 'Cascadia Code SemiBold', monospace;
+      font-size: 14px;
+      background-image: url("images/background.jpg");
+      background-size: cover;
+      background-position: center;
+      color: white;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 5rem auto;
+      background-color: rgba(0, 0, 0, 0.85);
+      padding: 3rem;
+      border-radius: 16px;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 1.8rem;
+      font-weight: bold;
+      margin-bottom: 2rem;
+    }
+
+    p {
+      line-height: 1.8;
+      margin-bottom: 2rem;
+    }
+
+    .planet {
+      font-style: italic;
+    }
+
+    button {
+      font-family: inherit;
+      font-size: 1.2rem;
+      padding: 1rem 2rem;
+      border: none;
+      border-radius: 10px;
+      background-color: #4CAF50;
+      color: white;
+      cursor: pointer;
+    }
+  </style>
+  <script>
+    function startQuiz() {
+      ['A','B','C','D','E','F'].forEach(t => localStorage.setItem(t, 0));
+      window.location.href = "question1.html";
+    }
+  </script>
+</head>
+<body>
+  <div class="container">
+    <h1>Innenhofparty 2025 - OUT OF THIS WORLD - Quiz</h1>
+    <p><strong>Finde jetzt heraus von welchem der 6 Planeten du kommst!</strong></p>
+    <p>
+      Bist du Bewohner des <span class="planet">Dschungel-Planeten Syl'Kaari</span> und somit Teil des <span class="planet">Xyr'Nathi Volkes</span>?<br><br>
+      Lebst du auf dem <span class="planet">Kristall-Planeten Serynthia</span> und gehörst der <span class="planet">Virellian Zivilisation</span> an?<br><br>
+      Bewohnst du die Tiefen des <span class="planet">Wasser-Planeten Thalassari</span> und bist somit ein <span class="planet">Thal'mora</span>?<br><br>
+      Stammst du vom <span class="planet">Liebes-Planeten Amarellis</span> und ein geborener <span class="planet">Seraphari</span>?<br><br>
+      Bist du auf dem <span class="planet">Steampunk-Planeten Crogthorne</span> als Teil des <span class="planet">Ferruvine-Konsortiums</span> aufgewachsen?<br><br>
+      Oder musstest du den harten Bedingungen des lavabedeckten <span class="planet">Sonnen-Planeten Solkaron</span> als Anhänger des <span class="planet">Pyrosol-Dominion</span> trotzen?
+    </p>
+    <button onclick="startQuiz()">Starte das Quiz</button>
+  </div>
+</body>
+</html>
