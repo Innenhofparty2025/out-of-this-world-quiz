@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Frage 5 - OUT OF THIS WORLD - Quiz</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    body {
+      font-family: 'Cascadia Code SemiBold', monospace;
+      font-size: 14px;
+      background-image: url("images/background.jpg");
+      background-size: cover;
+      background-position: center;
+      color: white;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 4rem auto;
+      background-color: rgba(0, 0, 0, 0.75);
+      padding: 2rem;
+      border-radius: 12px;
+    }
+
+    h1 {
+      text-align: center;
+      font-weight: bold;
+      margin-bottom: 1.5rem;
+    }
+
+    .options {
+      list-style: none;
+      padding: 0;
+    }
+
+    .options li {
+      margin-bottom: 1rem;
+    }
+
+    .options button {
+      width: 100%;
+      padding: 1rem;
+      font-size: 1rem;
+      font-family: inherit;
+      background-color: #2c3e50;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      text-align: left;
+      transition: background-color 0.3s ease;
+    }
+
+    .options button.selected {
+      background-color: #4CAF50 !important;
+    }
+  </style>
+  <script>
+    function choose(type, button) {
+      button.classList.add("selected");
+      let current = parseInt(localStorage.getItem(type)) || 0;
+      localStorage.setItem(type, current + 1);
+      setTimeout(() => {
+        window.location.href = "question6.html";
+      }, 300);
+    }
+  </script>
+</head>
+<body>
+  <div class="container">
+    <h1>Frage 5: Welche Rolle nimmst du in einer Gruppe ein?</h1>
+    <ul class="options">
+      <li><button onclick="choose('D', this)">a) Der Hüter oder Weise</button></li>
+      <li><button onclick="choose('F', this)">b) Der Erfinder oder Stratege</button></li>
+      <li><button onclick="choose('B', this)">c) Der Empath oder Heiler</button></li>
+      <li><button onclick="choose('E', this)">d) Der Analytiker oder Lehrer</button></li>
+      <li><button onclick="choose('A', this)">e) Der Unterstützer oder Netzwerker</button></li>
+      <li><button onclick="choose('C', this)">f) Der Anführer oder Kämpfer</button></li>
+    </ul>
+  </div>
+</body>
+</html>

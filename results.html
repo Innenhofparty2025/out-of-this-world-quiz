@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Auswertung - OUT OF THIS WORLD - Quiz</title>
+  <style>
+    body {
+      font-family: 'Cascadia Code SemiBold', monospace;
+      font-size: 14px;
+      background-image: url("images/background.jpg");
+      background-size: cover;
+      background-position: center;
+      color: white;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 4rem auto;
+      background-color: rgba(0, 0, 0, 0.85);
+      padding: 2rem;
+      border-radius: 12px;
+    }
+
+    h1, h2 {
+      text-align: center;
+    }
+
+    .description {
+      margin-top: 2rem;
+      line-height: 1.6;
+    }
+
+    img.character {
+      display: block;
+      margin: 2rem auto;
+      max-width: 300px;
+      border-radius: 12px;
+    }
+  </style>
+  <script>
+    const descriptions = {
+      A: {
+        title: "Wasser-Planet: Thalassari - *Thal'mora*",
+        text: `Du kommst vom Wasser-Planeten Thalassari und bist Teil der *Thal'mora*!\n\nAnpassungsfähig, intuitiv und fließend – du gehst mit dem Strom und verbindest dich mit anderen durch dein tiefes Verständnis.\n\nDie Thal'mora sind eine kollektivistische Gesellschaft, die Zusammenarbeit und fließende Veränderung schätzt. Ihre Städte befinden sich in lebenden Riffen oder tiefen Gräbentempeln...`,
+        image: "images/typ-a.jpg"
+      },
+      B: {
+        title: "Liebes-Planet: Amarellis - *Seraphari Volk*",
+        text: `Du kommst vom Liebes-Planeten Amarellis und bist Teil des *Seraphari Volkes*!\n\nLiebe, Empathie und emotionale Tiefe zeichnen dich aus...`,
+        image: "images/typ-b.jpg"
+      },
+      C: {
+        title: "Sonnenplanet: Solkaron - *Pyrosol Dominion*",
+        text: `Du kommst vom Sonnenplaneten Solkaron und bist Teil der *Pyrosol Dominion*!\n\nLeidenschaft, Stärke und der Wille, Spuren zu hinterlassen – du brennst für das, was dir wichtig ist...`,
+        image: "images/typ-c.jpg"
+      },
+      D: {
+        title: "Dschungel-Planet: Syl'Kaari - *Xyr'Nathi Volk*",
+        text: `Du lebst im Einklang mit der Natur, schätzt Spiritualität und vermeidest unnötigen Lärm – deine Seele ist ein grüner Hain voller Weisheit...`,
+        image: "images/typ-d.jpg"
+      },
+      E: {
+        title: "Kristall-Planet: Serynthia - *Virellian Zivilisation*",
+        text: `Struktur, Schönheit und Wissen bedeuten dir alles. Deine Gedanken schwingen im Einklang mit der Ordnung des Universums...`,
+        image: "images/typ-e.jpg"
+      },
+      F: {
+        title: "Steampunk-Planet: Crogthorne - *Ferruvine Konsortium*",
+        text: `Dein Geist liebt Maschinen, Ideen und kreative Konstruktionen. Du bist ein Erfinder, ein Tüftler – dein Antrieb ist der Dampf der Visionen...`,
+        image: "images/typ-f.jpg"
+      }
+    };
+
+    function showResult() {
+      const scores = ['A','B','C','D','E','F'].map(t => ({
+        type: t,
+        score: parseInt(localStorage.getItem(t)) || 0
+      }));
+
+      scores.sort((a, b) => b.score - a.score);
+      const top = scores[0].type;
+      const data = descriptions[top];
+
+      document.getElementById("result-title").innerHTML = data.title;
+      document.getElementById("result-text").innerText = data.text;
+      document.getElementById("result-image").src = data.image;
+    }
+
+    window.onload = showResult;
+  </script>
+</head>
+<body>
+  <div class="container">
+    <h1>Dein Ergebnis</h1>
+    <h2 id="result-title"></h2>
+    <img id="result-image" class="character" src="" alt="Charakterbild">
+    <div class="description" id="result-text"></div>
+  </div>
+</body>
+</html>

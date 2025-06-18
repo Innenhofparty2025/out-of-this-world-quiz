@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Auswertung - OUT OF THIS WORLD - Quiz</title>
+  <style>
+    body {
+      font-family: 'Cascadia Code SemiBold', monospace;
+      font-size: 14px;
+      background-image: url("images/background.jpg");
+      background-size: cover;
+      background-position: center;
+      color: white;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 4rem auto;
+      background-color: rgba(0, 0, 0, 0.85);
+      padding: 2rem;
+      border-radius: 12px;
+    }
+
+    h1, h2 {
+      text-align: center;
+    }
+
+    .description {
+      margin-top: 2rem;
+      line-height: 1.6;
+      white-space: pre-line;
+    }
+
+    img.character {
+      display: block;
+      margin: 2rem auto;
+      max-width: 300px;
+      border-radius: 12px;
+    }
+
+    .buttons {
+      display: flex;
+      justify-content: center;
+      margin-top: 2rem;
+    }
+
+    .buttons button {
+      padding: 0.75rem 1.5rem;
+      font-size: 1rem;
+      font-family: inherit;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      background-color: #4CAF50;
+      color: white;
+    }
+  </style>
+  <script>
+    const descriptions = {
+      A: {
+        title: "Wasser-Planet: Thalassari - *Thal'mora*",
+        text: `Du kommst vom Wasser-Planeten Thalassari und bist Teil der *Thal'mora*!
+
+Anpassungsfähig, intuitiv und fließend – du gehst mit dem Strom und verbindest dich mit anderen durch dein tiefes Verständnis.
+
+Die Thal'mora sind eine kollektivistische Gesellschaft, die Zusammenarbeit und fließende Veränderung schätzt. Ihre Städte befinden sich in lebenden Riffen oder tiefen Gräbentempeln. Kommunikation erfolgt über Wasserdruck, Farbe und Sonar. Erinnerungen werden genetisch und durch gemeinsame Traumbecken weitergegeben. Sie haben große gemeinschaftliche Zeremonien für besondere Anlässe, bei der sie eine Art Sonar-Gesang/Musik und Farb-und Lichtspiele von sich geben.
+
+Die Thal'mora sind Weichkörperwesen mit leuchtenden Biofilamente und farbwechselnder Haut. Sie können ihre Form flexibel anpassen und haben große Hände und Füße mit Schwimmhäuten, mit denen sie sich mühelos auf ihrem wasserbedeckten Planet fortbewegen können.`,
+        image: "images/typ-a.jpg"
+      },
+      B: {
+        title: "Liebes-Planet: Amarellis - *Seraphari Volk*",
+        text: `Du kommst vom Liebes-Planeten Amarellis und bist Teil des *Seraphari Volkes*!
+
+Liebe, Empathie und emotionale Tiefe zeichnen dich aus. Du siehst in der Verbindung zu anderen das höchste Ziel.
+
+Die Seraphari sind eine Zivilisation, die auf Verbindung, Empathie und emotionaler Harmonie beruht. Gedanken und Gefühle werden direkt ausgetauscht, teilweise durch temporäre Verschmelzung. Kunst ist emotionale Projektion, Konflikte werden durch kollektive Traumerfahrung gelöst. Liebe gilt als kosmische Kraft - vergleichbar mit Gravitation.
+
+Die Seraphari sind zarte, leuchtende Wesen, deren Haut an Blütenblätter erinnert. Sie strahlen Wärme und Duft aus mit emotional wechselnden Farben. Um sich fortzubewegen schweben oder gleiten sie elegant umher.`,
+        image: "images/typ-b.jpg"
+      },
+      C: {
+        title: "Sonnenplanet: Solkaron - *Pyrosol Dominion*",
+        text: `Du kommst vom Sonnenplaneten Solkaron und bist Teil der *Pyrosol Dominion*!
+
+Leidenschaft, Stärke und der Wille, Spuren zu hinterlassen – du brennst für das, was dir wichtig ist.
+
+Die Pyrosol Dominion ist hierarchisch und mythologisch geprägt, zentriert um Feuergötter und Sonnenzyklen. Macht hängt von der Nähe zu Sonneneruptionen ab. Ihre Städte schweben über Lava-Seen gehalten durch Magnetfelder. Rituale umfassen Lavaleitung und Sonnenflammenlesung. Geschichte wird in brennende Steine eingraviert.
+
+Die Pyrosol sind titanhafte Wesen aus lebender Lave und Obsidian, durchzogen von leuchtenden Magmarissen. Ihre Augen sind wie brennende Sonnen.`,
+        image: "images/typ-c.jpg"
+      },
+      D: {
+        title: "Dschungel-Planet: Syl'Kaari - *Xyr'Nathi Volk*",
+        text: `Du kommst vom Dschungel-Planet Syl'Kaari und bist Teil des *Xyr'Nathi Volkes*!
+
+Du lebst im Einklang mit der Natur, schätzt Spiritualität und vermeidest unnötigen Lärm – deine Seele ist ein grüner Hain voller Weisheit.
+
+Die Xyr'Nathi leben in kleineren Stämmen auf gigantischen Bäumen, die sie über Generationen hinweg pflegen. Sie haben eine tiefe spirituelle Verbindung zur Flora und Fauna und kommunizieren teilweise über Pheromone, um keinen unnötigen Lärm zu verursachen. Da die Xyr'Nathi im Einklang mit ihrer Umwelt leben, werden Werkzeuge gezüchtet, Wachstum von Bäumen und Pflanzen für mehr Wohnraum geleitet und Nahrung nur nach Bedarf gesammelt.
+
+Das Volk der Xyr'Nathi sind große Wesen mit vier langen Gliedmaßen zum Klettern und Schwingen. Ihre Haut erinnert an Baumrinde, die mit weichem, moosartigem Fell bedeckt ist. Auffällig sind die biolumineszenten Markierungen in ihrem Gesicht, mit denen sie ihre Stammesangehörigkeit zeigen.`,
+        image: "images/typ-d.jpg"
+      },
+      E: {
+        title: "Kristall-Planet: Serynthia - *Virellian Zivilisation*",
+        text: `Du kommst vom Kristall-Planeten Serynthia und bist Teil der *Virellian Zivilisation*!
+
+Struktur, Schönheit und Wissen bedeuten dir alles. Deine Gedanken schwingen im Einklang mit der Ordnung des Universums.
+
+Die Gesellschaft der Virellian basiert auf Symmetrie und Resonanz. Sie kommunizieren über harmonische Schwingungen, die durch den Kristallboden wandern. Ihre Städte bestehen aus gigantischen, geometrischen Türmen. Gesammeltes Wissen wird in Kristallmatritzen geschnitzt – Wissenschaft und Kunst sind eins.
+
+Die Virellian haben halbtransparente, facettenreiche Körper mit panzerartiger Haut, die das Licht bricht. In ihrem Inneren pulsieren farbige Energien und ihre Gliedmaßen enden in klauenartigen Krallen für präzise Bewegungen in dem gefährlichen Umfeld.`,
+        image: "images/typ-e.jpg"
+      },
+      F: {
+        title: "Steampunk-Planet: Crogthorne - *Ferruvine Konsortium*",
+        text: `Du kommst vom Steampunk-Planeten Crogthorne und bist Teil des *Ferruvine Konsortiums*!
+
+Dein Geist liebt Maschinen, Ideen und kreative Konstruktionen. Du bist ein Erfinder, ein Tüftler – dein Antrieb ist der Dampf der Visionen.
+
+Das Ferruvine Konsortium ist eine technokratische Gilden-Gesellschaft, in der Erfindung heilig ist. Die Städte dampfen und ticken, erfüllt vom Klang der Zahnräder. Kreativität ist Ehrenpflicht. Duelle werden mit selbstgebauten Maschinen ausgetragen. Energie stammt aus Geothermie und Zahnrad-Rechenmaschinen.
+
+Die Ferruvine sind insektoide oder vogelähnliche Wesen mit bronzenen Exoskeletten. Mechanische Monokel und Getriebeglieder sind häufig vertreten.`,
+        image: "images/typ-f.jpg"
+      }
+    };
+
+    function showResult() {
+      const scores = ['A','B','C','D','E','F'].map(t => ({
+        type: t,
+        score: parseInt(localStorage.getItem(t)) || 0
+      }));
+
+      scores.sort((a, b) => b.score - a.score);
+      const top = scores[0].type;
+      const data = descriptions[top];
+
+      document.getElementById("result-title").innerHTML = data.title;
+      document.getElementById("result-text").innerText = data.text;
+      document.getElementById("result-image").src = data.image;
+    }
+
+    function restartQuiz() {
+      ['A','B','C','D','E','F'].forEach(t => localStorage.setItem(t, 0));
+      window.location.href = "start.html";
+    }
+
+    window.onload = showResult;
+  </script>
+</head>
+<body>
+  <div class="container">
+    <h1>Dein Ergebnis</h1>
+    <h2 id="result-title"></h2>
+    <img id="result-image" class="character" src="" alt="Charakterbild">
+    <div class="description" id="result-text"></div>
+    <div class="buttons">
+      <button onclick="restartQuiz()">Quiz neu starten</button>
+    </div>
+  </div>
+</body>
+</html>
